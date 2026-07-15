@@ -27,8 +27,8 @@ const MovieList = () => {
   );
 
   useEffect(() => {
-    dispatch(getMovies(1));
-  }, [dispatch]);
+  dispatch(getMovies(currentPage));
+}, [dispatch, currentPage]);
 
   if (loading) {
     return <h2 className="loading">Loading...</h2>;
@@ -50,14 +50,23 @@ const MovieList = () => {
             );
 
             return (
-              <div className="card" key={movie.id}>
+            <div
+  className="card"
+  key={movie.id}
+  onClick={() =>
+    navigate(`/movie/${movie.id}`, {
+      state: {
+        page: currentPage,
+      },
+    })
+  }
+>
 
                 {/* Clickable Area */}
                 <div
-                  className="movie-clickable"
-                  onClick={() => navigate(`/movie/${movie.id}`)}
-                  style={{ cursor: "pointer" }}
-                >
+  className="movie-clickable"
+  style={{ cursor: "pointer" }}
+>
                   <img
                     className="poster"
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -78,13 +87,16 @@ const MovieList = () => {
                   <button
                     className="favorite-btn"
                     type="button"
-                    onClick={() => {
-                      if (isFavorite) {
-                        dispatch(removeFavorite(movie.id));
-                      } else {
-                        dispatch(addFavorite(movie));
-                      }
-                    }}
+                    onClick={(e) => {
+
+  e.stopPropagation();
+
+  if (isFavorite) {
+    dispatch(removeFavorite(movie.id));
+  } else {
+    dispatch(addFavorite(movie));
+  }
+}}
                   >
                     {isFavorite
                       ? "❤️ Remove Favorite"
@@ -98,23 +110,23 @@ const MovieList = () => {
         </div>
 
         <div className="pagination">
-          <button
-            onClick={() => dispatch(getMovies(currentPage - 1))}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
+         <button
+  onClick={() => dispatch(getMovies(currentPage - 1))}
+  disabled={currentPage === 1}
+>
+  Previous
+</button>
 
           <span>
             Page {currentPage} of {totalPages}
           </span>
 
-          <button
-            onClick={() => dispatch(getMovies(currentPage + 1))}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+         <button
+  onClick={() => dispatch(getMovies(currentPage + 1))}
+  disabled={currentPage === totalPages}
+>
+  Next
+</button>
         </div>
       </div>
     </div>

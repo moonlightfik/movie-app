@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useLocation } from "react-router-dom";
 import {
   addFavorite,
   removeFavorite,
@@ -19,6 +19,7 @@ import "./MovieDetails.css";
 const MovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
 
 const favorites = useSelector(
@@ -84,11 +85,17 @@ const isFavorite = favorites.some(
         }}
       >
         <button
-          className="back-btn"
-          onClick={() => navigate(-1)}
-        >
-          ← Back
-        </button>
+  className="back-btn"
+  onClick={() =>
+    navigate("/", {
+      state: {
+        page: location.state?.page || 1,
+      },
+    })
+  }
+>
+  ← Back
+</button>
 
         <div className="hero-content">
 
