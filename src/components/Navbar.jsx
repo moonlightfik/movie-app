@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import { useLocation } from "react-router-dom";
 import "./layout.css";
 
 
 const Navbar = () => {
 
   const navigate = useNavigate();
-
+const location = useLocation();
 
   return (
 
@@ -44,17 +46,21 @@ const Navbar = () => {
       </nav>
 
 
-
-      <input
-
-        className="search"
-
-        placeholder="Search titles, actors..."
-
-        onFocus={() => navigate("/browse")}
-
-      />
-
+{location.pathname === "/browse" ? (
+  <SearchBar />
+) : (
+  <div
+    className="search-container"
+    onClick={() => navigate("/browse")}
+    style={{ cursor: "text" }}
+  >
+    <input
+      className="search-input"
+      placeholder="Search movies..."
+      readOnly
+    />
+  </div>
+)}
 
     </header>
 

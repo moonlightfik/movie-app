@@ -59,3 +59,33 @@ export const searchMovies = async (query) => {
 
   return response.data.results;
 };
+export const fetchTrendingMovies = async () => {
+  const response = await movieAPI.get(
+    `/trending/movie/week?api_key=${API_KEY}`
+  );
+
+  return response.data.results;
+};
+
+export const fetchGenres = async () => {
+  const response = await movieAPI.get(
+    `/genre/movie/list?api_key=${API_KEY}`
+  );
+
+  return response.data.genres;
+};
+export const fetchTopRatedMovies = async () => {
+  const response = await movieAPI.get(
+    `/movie/top_rated?api_key=${API_KEY}`
+  );
+
+  return response.data.results;
+};
+
+export const fetchNowPlayingMovies = async () => {
+  const response = await movieAPI.get(
+    `/movie/now_playing?api_key=${API_KEY}`
+  );
+
+  return response.data.results;
+};

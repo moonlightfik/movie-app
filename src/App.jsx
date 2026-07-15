@@ -10,17 +10,9 @@ import Footer from "./components/Footer";
 import MovieList from "./features/movies/MovieList";
 import Favorites from "./pages/Favorites";
 import MovieDetails from "./pages/MovieDetails";
+import Browse from "./pages/Browse";
 
 
-const Browse = () => {
-  return (
-    <div className="container">
-      <h1 className="title">
-        Browse All Titles
-      </h1>
-    </div>
-  );
-};
 
 
 function App() {
