@@ -24,13 +24,15 @@ body {
 
 .card {
   background: #1f2937;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 
 .card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.4);
 }
 
 .poster {
@@ -40,15 +42,21 @@ body {
 }
 
 .info {
-  padding: 15px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .info h3 {
-  margin: 0;
-  margin-bottom: 10px;
   font-size: 18px;
+  min-height: 48px;
+  margin: 0;
 }
 
+.info p {
+  color: #d1d5db;
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -80,4 +88,26 @@ body {
 .error {
   text-align: center;
   margin-top: 100px;
+}
+.favorite-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#ef4444,#dc2626);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.favorite-btn:hover{
+  transform: scale(1.03);
+  background: linear-gradient(90deg,#f87171,#ef4444);
+}
+
+.favorite-btn:active{
+  transform: scale(.98);
 }
