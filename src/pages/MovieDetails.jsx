@@ -84,15 +84,9 @@ const isFavorite = favorites.some(
           backgroundImage: `linear-gradient(rgba(0,0,0,.55),rgba(17,24,39,1)), url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
         }}
       >
-        <button
+       <button
   className="back-btn"
-  onClick={() =>
-    navigate("/", {
-      state: {
-        page: location.state?.page || 1,
-      },
-    })
-  }
+  onClick={() => navigate(-1)}
 >
   ← Back
 </button>

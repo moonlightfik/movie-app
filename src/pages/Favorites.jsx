@@ -52,7 +52,11 @@ const navigate = useNavigate();
          <div
   className="card"
   key={movie.id}
-  onClick={() => navigate(`/movie/${movie.id}`)}
+  onClick={() => navigate(`/movie/${movie.id}`, {
+  state:{
+    from:"favorites"
+  }
+})}
 >
 
             <img

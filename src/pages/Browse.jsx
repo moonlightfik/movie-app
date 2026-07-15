@@ -76,7 +76,13 @@ key={movie.id}
 
 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
 
-onClick={()=>navigate(`/movie/${movie.id}`)}
+onClick={() =>
+  navigate(`/movie/${movie.id}`, {
+    state:{
+      from:"browse"
+    }
+  })
+}
 
 />
 

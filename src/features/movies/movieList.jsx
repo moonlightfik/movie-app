@@ -55,10 +55,11 @@ const MovieList = () => {
   key={movie.id}
   onClick={() =>
     navigate(`/movie/${movie.id}`, {
-      state: {
-        page: currentPage,
-      },
-    })
+  state: {
+    from: "movies",
+    page: currentPage
+  }
+})
   }
 >
 
